@@ -1,0 +1,6 @@
+github.com/danbrakeley/frog v0.6.1 h1:aMKQ9KB9+IPpApZDF4CbItnqT4fst6DbwsLO24boPSY=
+github.com/danbrakeley/frog v0.6.1/go.mod h1:vhHvmMTGGWRwvDmhgSspeW09ucD3dt/zd9viC0Lg7tY=
+github.com/mattn/go-isatty v0.0.9 h1:d5US/mDsogSGW37IV293h//ZFaeajb69h+EHFsv2xGg=
+github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2yME+cCiQ=
+golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20190904154756-749cb33beabd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
