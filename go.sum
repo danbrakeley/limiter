@@ -1,8 +1,9 @@
 github.com/danbrakeley/commandline v1.0.0 h1:9qOX7wnJxECT0ZEZav6P5/GVdX/xSsPnIwQ9ptpMUuc=
 github.com/danbrakeley/commandline v1.0.0/go.mod h1:TebcfPCZN3Dpc0DZMp68KTbVzCr07KCfAVkrYlLi2is=
-github.com/danbrakeley/frog v0.6.1 h1:aMKQ9KB9+IPpApZDF4CbItnqT4fst6DbwsLO24boPSY=
-github.com/danbrakeley/frog v0.6.1/go.mod h1:vhHvmMTGGWRwvDmhgSspeW09ucD3dt/zd9viC0Lg7tY=
-github.com/mattn/go-isatty v0.0.9 h1:d5US/mDsogSGW37IV293h//ZFaeajb69h+EHFsv2xGg=
-github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2yME+cCiQ=
-golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
-golang.org/x/sys v0.0.0-20190904154756-749cb33beabd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+github.com/danbrakeley/frog v0.7.1 h1:q8NBFud9ZyLIljTs3LdCo0TW90Ju1nrzS4p3Fv41lOo=
+github.com/danbrakeley/frog v0.7.1/go.mod h1:eoDKdm6/gPfN87c0vW8G6XL0HagVTGFJ2rwCWf/Ievk=
+github.com/mattn/go-isatty v0.0.12 h1:wuysRhFDzyxgEmMf5xjvJ2M9dZoWAXNNr5LSBS7uHXY=
+github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
+golang.org/x/sys v0.0.0-20200116001909-b77594299b42/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210426230700-d19ff857e887 h1:dXfMednGJh/SUUFjTLsWJz3P+TQt9qnR11GgeI3vWKs=
+golang.org/x/sys v0.0.0-20210426230700-d19ff857e887/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

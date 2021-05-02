@@ -15,7 +15,7 @@ import (
 	"github.com/danbrakeley/frog"
 )
 
-var Version = "v0.2.0"
+var Version = "v0.3.alpha"
 
 func main() {
 	if len(os.Args) != 2 {
@@ -55,50 +55,66 @@ func main() {
 	log.Close()
 }
 
+type Task struct {
+	TaskID  int64
+	LineNum int64
+	Cmd     string
+}
+
 func readAndRunTasks(log frog.Logger, limit int, taskReader io.Reader) error {
 	log.Info("Starting", frog.Int("limit", limit))
 
 	var wg sync.WaitGroup
-	chTasks := make(chan string)
+	chTasks := make(chan Task)
 
 	// start task runners
 	wg.Add(limit)
 	for i := 0; i < limit; i++ {
-		id := i
+		thread := i
 		go func() {
-			var l frog.Logger
+			// var l frog.Logger
 			for t := range chTasks {
-				if l == nil {
-					l = frog.AddFixedLine(log)
-				}
-				l.Transient("Running", frog.String("cmd", t), frog.Int("thread", id))
+				fthread := frog.Int("thread", thread)
+				fline := frog.Int64("line", t.LineNum)
+				fcmd := frog.String("cmd", t.Cmd)
 
-				args, err := commandline.Parse(t)
+				// if l == nil {
+				// 	l = frog.AddAnchor(log)
+				// }
+				// l.Transient("Running", fthread, fline, fcmd)
+
+				args, err := commandline.Parse(t.Cmd)
 				if err != nil {
-					l.Error("failed to parse task as commandline", frog.Err(err), frog.String("cmd", t))
+					log.Error("failed to parse task as commandline", fthread, fline, fcmd, frog.Err(err))
 					continue
 				}
 				cmd := exec.Command(args[0], args[1:]...)
-				cmd.Stderr = os.Stderr
+				// TODO: this messes up frog's cursor movements, so need to build something to pipe
+				// anything sent to Stderr to actual frog log lines
+				//cmd.Stderr = os.Stderr
 				err = cmd.Run()
 				if err != nil {
-					l.Error("command failed", frog.Err(err), frog.String("cmd", t))
+					log.Error("command failed", fthread, fline, fcmd, frog.Err(err))
 					continue
 				}
 
-				l.Info("Completed", frog.String("cmd", t), frog.Int("thread", id))
+				log.Info("Completed", fthread, fline, fcmd)
 			}
-			frog.RemoveFixedLine(l)
+			// frog.RemoveAnchor(l)
 			wg.Done()
 		}()
 	}
 
 	// feed data to runners
 	scanner := bufio.NewScanner(taskReader)
+	var taskID int64
+	var lineNum int64
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
+		lineNum++
 		if len(line) > 0 && line[0] != '#' {
-			chTasks <- line
+			chTasks <- Task{TaskID: taskID, LineNum: lineNum, Cmd: line}
+			taskID++
 		}
 	}
 	if err := scanner.Err(); err != nil {
