@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/danbrakeley/commandline"
 	"github.com/danbrakeley/frog"
-	"github.com/danbrakeley/limiter/commandline"
 )
 
 var Version = "v0.2.0"
